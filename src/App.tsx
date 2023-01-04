@@ -1,26 +1,32 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { Helmet } from "react-helmet";
+import { HelmetProvider } from "react-helmet-async";
+import GlobalStyles from "./components/GlobalStyles";
+import styled from "styled-components";
+import Header from "./components/Header";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <GlobalStyles />
+      <HelmetProvider>
+        <Helmet>
+          <link
+            href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap"
+            rel="stylesheet"
+          />
+        </Helmet>
+      </HelmetProvider>
+
+      <Container>
+        <Header />
+      </Container>
+    </>
   );
 }
 
 export default App;
+
+const Container = styled.div`
+  padding: 0 24px;
+`;
