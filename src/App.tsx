@@ -5,6 +5,7 @@ import GlobalStyles from "./components/GlobalStyles";
 import styled from "styled-components";
 import Header from "./components/Header";
 
+
 function App() {
   return (
     <>
@@ -21,6 +22,7 @@ function App() {
       <Container>
         <Header />
       </Container>
+      
     </>
   );
 }

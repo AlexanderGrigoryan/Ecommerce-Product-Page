@@ -1,26 +1,32 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import burgerIcon from "../img/icon-menu.svg";
 import logo from "../img/logo.svg";
 import Cart from "../svg/Cart";
 import AvatarIcon from "../img/image-avatar.png";
+import BurgerWindow from "../components/BurgerWindow";
 
 function Header() {
+  const [burgerMenu, setBurgerMenu] = useState<boolean>(false);
+
   return (
-    <Container>
-      <NavContainer>
-        <BurgerButton>
-          <Burger src={burgerIcon} alt="burger icon" />
-        </BurgerButton>
-        <Logo src={logo} alt="logo" />
-      </NavContainer>
-      <UserContainer>
-        <CartButton>
-          <Cart />
-        </CartButton>
-        <Avatar src={AvatarIcon} alt="avatar" />
-      </UserContainer>
-    </Container>
+    <>
+      <Container>
+        <NavContainer>
+          <BurgerButton onClick={() => setBurgerMenu(true)}>
+            <Burger src={burgerIcon} alt="burger icon" />
+          </BurgerButton>
+          <Logo src={logo} alt="logo" />
+        </NavContainer>
+        <UserContainer>
+          <CartButton>
+            <Cart />
+          </CartButton>
+          <Avatar src={AvatarIcon} alt="avatar" />
+        </UserContainer>
+      </Container>
+      {burgerMenu ? <BurgerWindow setBurgerMenu={setBurgerMenu} /> : null}
+    </>
   );
 }
 
