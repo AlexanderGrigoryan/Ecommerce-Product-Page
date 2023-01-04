@@ -4,7 +4,8 @@ import { HelmetProvider } from "react-helmet-async";
 import GlobalStyles from "./components/GlobalStyles";
 import styled from "styled-components";
 import Header from "./components/Header";
-
+import MobileSlider from "./components/MobileSlider";
+import Product from "./components/Product";
 
 function App() {
   return (
@@ -22,7 +23,10 @@ function App() {
       <Container>
         <Header />
       </Container>
-      
+      <MobileSlider />
+      <Container>
+        <Product />
+      </Container>
     </>
   );
 }
