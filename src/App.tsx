@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Helmet } from "react-helmet";
 import { HelmetProvider } from "react-helmet-async";
 import GlobalStyles from "./components/GlobalStyles";
@@ -6,8 +6,11 @@ import styled from "styled-components";
 import Header from "./components/Header";
 import MobileSlider from "./components/MobileSlider";
 import Product from "./components/Product";
+import CartModal from "./components/CartModal";
 
 function App() {
+  const [cartMenu, setCartMenu] = useState<boolean>(false);
+
   return (
     <>
       <GlobalStyles />
@@ -21,12 +24,15 @@ function App() {
       </HelmetProvider>
 
       <Container>
-        <Header />
+        <Header cartMenu={cartMenu} setCartMenu={setCartMenu} />
       </Container>
       <MobileSlider />
       <Container>
         <Product />
       </Container>
+      {cartMenu ? (
+        <CartModal cartMenu={cartMenu} setCartMenu={setCartMenu} />
+      ) : null}
     </>
   );
 }

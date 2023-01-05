@@ -6,7 +6,14 @@ import Cart from "../svg/Cart";
 import AvatarIcon from "../img/image-avatar.png";
 import BurgerWindow from "../components/BurgerWindow";
 
-function Header() {
+interface Props {
+  cartMenu: boolean;
+  setCartMenu: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+function Header(props: Props) {
+  const { cartMenu, setCartMenu } = props;
+
   const [burgerMenu, setBurgerMenu] = useState<boolean>(false);
 
   return (
@@ -19,7 +26,7 @@ function Header() {
           <Logo src={logo} alt="logo" />
         </NavContainer>
         <UserContainer>
-          <CartButton>
+          <CartButton onClick={() => setCartMenu(!cartMenu)}>
             <Cart />
           </CartButton>
           <Avatar src={AvatarIcon} alt="avatar" />

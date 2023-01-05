@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import CartWhite from "../svg/CartWhite";
 import Minus from "../svg/Minus";
 import Plus from "../svg/Plus";
 
 function Product() {
+  const [count, setCount] = useState<number>(0);
+
   return (
     <Container>
       <Brand>Sneaker Company</Brand>
@@ -22,11 +24,11 @@ function Product() {
         <Discount>$250.00</Discount>
       </PriceContainer>
       <Counter>
-        <CountButton>
+        <CountButton onClick={() => (count !== 0 ? setCount(count - 1) : null)}>
           <Minus />
         </CountButton>
-        <Number>0</Number>
-        <CountButton>
+        <Number>{count}</Number>
+        <CountButton onClick={() => setCount(count + 1)}>
           <Plus />
         </CountButton>
       </Counter>
