@@ -178,7 +178,7 @@ const Number = styled.p`
 `;
 
 const Button = styled.button`
-  width: 327px;
+  width: 100%;
   height: 56px;
   border-radius: 10px;
   background: #ff7e1b;

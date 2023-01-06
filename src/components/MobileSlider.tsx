@@ -45,7 +45,9 @@ function MobileSlider() {
 
 export default MobileSlider;
 
-const Container = styled.div``;
+const Container = styled.div`
+position: relative;
+`;
 
 const Img = styled.img`
   width: 100%;
@@ -67,8 +69,9 @@ const PreviousButton = styled.button`
   justify-content: center;
   align-items: center;
   position: absolute;
-  top: 232px;
+  top: 50%;
   left: 8px;
+  transform: translate(0, -50%);
 `;
 
 const NextButton = styled.button`
@@ -82,6 +85,7 @@ const NextButton = styled.button`
   justify-content: center;
   align-items: center;
   position: absolute;
-  top: 232px;
+  top: 50%;
   right: 8px;
+  transform: translate(0, -50%);
 `;

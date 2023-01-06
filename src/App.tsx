@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import { Helmet } from "react-helmet";
-import { HelmetProvider } from "react-helmet-async";
+import { Helmet, HelmetProvider } from "react-helmet-async";
 import GlobalStyles from "./components/GlobalStyles";
 import styled from "styled-components";
 import Header from "./components/Header";

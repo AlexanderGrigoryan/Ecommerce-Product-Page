@@ -45,6 +45,7 @@ const MainBackground = styled.div`
   left: 0;
   background: rgba(0, 0, 0, 0.75);
   width: 100%;
+  z-index: 10;
 `;
 
 const BurgerBlock = styled.div`
@@ -78,4 +79,8 @@ const ListLink = styled.a`
   line-height: 26px;
   text-decoration: none;
   color: #1d2026;
+
+  &:hover {
+    text-decoration: underline;
+  }
 `;

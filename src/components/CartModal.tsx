@@ -9,7 +9,7 @@ interface Props {
 }
 
 function CartModal(props: Props) {
-  const { cartList, setCartList} = props;
+  const { cartList, setCartList } = props;
 
   return (
     <Container>
@@ -17,17 +17,20 @@ function CartModal(props: Props) {
       {cartList.length === 0 ? (
         <Text>Your cart is empty.</Text>
       ) : (
-        <AddedProduct>
-          <Image src={cartList[0].image} alt="image" />
-          <Info>
-            <Model>{cartList[0].model}</Model>
-            <Price>${cartList[0].price + " x " + cartList[0].quantity}</Price>
-            <Total>${cartList[0].total}</Total>
-          </Info>
-          <DeleteButton onClick={() => setCartList([])}>
-            <Delete src={deleteIcon} alt="delete icon" />
-          </DeleteButton>
-        </AddedProduct>
+        <>
+          <AddedProduct>
+            <Image src={cartList[0].image} alt="image" />
+            <Info>
+              <Model>{cartList[0].model}</Model>
+              <Price>${cartList[0].price + " x " + cartList[0].quantity}</Price>
+              <Total>${cartList[0].total}</Total>
+            </Info>
+            <DeleteButton onClick={() => setCartList([])}>
+              <Delete src={deleteIcon} alt="delete icon" />
+            </DeleteButton>
+          </AddedProduct>
+          <CheckoutButton>Checkout</CheckoutButton>
+        </>
       )}
     </Container>
   );
@@ -44,7 +47,7 @@ const Container = styled.div`
   padding: 24px 24px 32px 24px;
   position: absolute;
   top: 80px;
-  left: 8px;
+  right: 8px;
 `;
 
 const Cart = styled.p`
@@ -52,15 +55,25 @@ const Cart = styled.p`
   font-weight: 700;
   line-height: 20px;
   color: #1d2026;
+  margin-bottom: 60px;
 `;
 
-const Text = styled.p``;
+const Text = styled.p`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
 
-const AddedProduct = styled.div``;
+const AddedProduct = styled.div`
+  display: flex;
+  align-items: center;
+  column-gap: 16px;
+`;
 
 const Image = styled.img`
   width: 50px;
   height: 50px;
+  border-radius: 4px;
 `;
 
 const Info = styled.div``;
@@ -94,3 +107,22 @@ const DeleteButton = styled.button`
 `;
 
 const Delete = styled.img``;
+
+const CheckoutButton = styled.button`
+  width: 312px;
+  height: 56px;
+  border-radius: 10px;
+  border: none;
+  background: #ff7e1b;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 20px;
+  margin-top: 24px;
+  cursor: pointer;
+  color: #ffffff;
+  transition: all ease 0.2s;
+
+  &:hover {
+    background: #ffab6a;
+  }
+`;
