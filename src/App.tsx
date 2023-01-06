@@ -7,9 +7,12 @@ import Header from "./components/Header";
 import MobileSlider from "./components/MobileSlider";
 import Product from "./components/Product";
 import CartModal from "./components/CartModal";
+import { ProductType } from "./types";
 
 function App() {
   const [cartMenu, setCartMenu] = useState<boolean>(false);
+  const [cartList, setCartList] = useState<ProductType[]>([]);
+  const [count, setCount] = useState<number>(0);
 
   return (
     <>
@@ -24,14 +27,23 @@ function App() {
       </HelmetProvider>
 
       <Container>
-        <Header cartMenu={cartMenu} setCartMenu={setCartMenu} />
+        <Header
+          cartMenu={cartMenu}
+          setCartMenu={setCartMenu}
+          cartList={cartList}
+        />
       </Container>
       <MobileSlider />
       <Container>
-        <Product />
+        <Product
+          cartList={cartList}
+          setCartList={setCartList}
+          count={count}
+          setCount={setCount}
+        />
       </Container>
       {cartMenu ? (
-        <CartModal cartMenu={cartMenu} setCartMenu={setCartMenu} />
+        <CartModal cartList={cartList} setCartList={setCartList} />
       ) : null}
     </>
   );

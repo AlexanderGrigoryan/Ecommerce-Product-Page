@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import styled from "styled-components";
 import product1 from "../img/image-product-1.jpg";
 import product2 from "../img/image-product-2.jpg";

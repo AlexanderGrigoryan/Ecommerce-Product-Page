@@ -1,11 +1,51 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import CartWhite from "../svg/CartWhite";
 import Minus from "../svg/Minus";
 import Plus from "../svg/Plus";
+import { ProductType } from "../types";
+import miniImage from "../img/image-product-1-thumbnail.jpg";
 
-function Product() {
-  const [count, setCount] = useState<number>(0);
+interface Props {
+  cartList: ProductType[];
+  setCartList: React.Dispatch<React.SetStateAction<ProductType[]>>;
+  count: number;
+  setCount: React.Dispatch<React.SetStateAction<number>>;
+}
+
+function Product(props: Props) {
+  const { cartList, setCartList, count, setCount } = props;
+
+  const addToCart = () => {
+    if (
+      count > 0 &&
+      cartList.find(
+        (element: ProductType) =>
+          element.model === "Fall Limited Edition Sneakers"
+      )
+    ) {
+      const updateQuantityAndTotal = [...cartList];
+      updateQuantityAndTotal[0].quantity =
+        updateQuantityAndTotal[0].quantity + count;
+      updateQuantityAndTotal[0].total =
+        updateQuantityAndTotal[0].total +
+        count * updateQuantityAndTotal[0].price;
+      setCartList(updateQuantityAndTotal);
+      setCount(0);
+    } else if (count > 0) {
+      setCartList([
+        ...cartList,
+        {
+          image: miniImage,
+          model: "Fall Limited Edition Sneakers",
+          price: 125,
+          quantity: count,
+          total: count * 125,
+        },
+      ]);
+      setCount(0);
+    }
+  };
 
   return (
     <Container>
@@ -32,7 +72,7 @@ function Product() {
           <Plus />
         </CountButton>
       </Counter>
-      <Button>
+      <Button onClick={addToCart}>
         <CartWhite />
         Add to cart
       </Button>

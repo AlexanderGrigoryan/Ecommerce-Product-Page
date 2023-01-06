@@ -5,14 +5,18 @@ import logo from "../img/logo.svg";
 import Cart from "../svg/Cart";
 import AvatarIcon from "../img/image-avatar.png";
 import BurgerWindow from "../components/BurgerWindow";
+import { ProductType } from "../types";
 
 interface Props {
   cartMenu: boolean;
   setCartMenu: React.Dispatch<React.SetStateAction<boolean>>;
+  cartList: ProductType[];
+
 }
 
 function Header(props: Props) {
-  const { cartMenu, setCartMenu } = props;
+  const { cartMenu, setCartMenu, cartList} =
+    props;
 
   const [burgerMenu, setBurgerMenu] = useState<boolean>(false);
 
@@ -28,6 +32,9 @@ function Header(props: Props) {
         <UserContainer>
           <CartButton onClick={() => setCartMenu(!cartMenu)}>
             <Cart />
+            {cartList.length === 0 ? null : (
+              <ItemsCounter>{cartList[0].quantity}</ItemsCounter>
+            )}
           </CartButton>
           <Avatar src={AvatarIcon} alt="avatar" />
         </UserContainer>
@@ -67,12 +74,30 @@ const UserContainer = styled.div`
   display: flex;
   align-items: center;
   column-gap: 22px;
+  position: relative;
 `;
 
 const CartButton = styled.button`
   border: none;
   background: inherit;
   cursor: pointer;
+`;
+
+const ItemsCounter = styled.div`
+  width: 19px;
+  height: 13px;
+  border-radius: 6.5px;
+  background: #ff7e1b;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 12px;
+  color: #ffffff;
+  position: absolute;
+  top: -4px;
+  left: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 const Avatar = styled.img`
