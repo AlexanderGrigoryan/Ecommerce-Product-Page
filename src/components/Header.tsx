@@ -178,4 +178,9 @@ const Avatar = styled.img`
     border: 2px solid #ff7e1b;
     border-radius: 50%;
   }
+
+  @media screen and (min-width: 768px) {
+    width: 50px;
+    height: 50px;
+  }
 `;

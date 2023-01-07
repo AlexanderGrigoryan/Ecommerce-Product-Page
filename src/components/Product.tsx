@@ -63,19 +63,23 @@ function Product(props: Props) {
         </PriceBlock>
         <Discount>$250.00</Discount>
       </PriceContainer>
-      <Counter>
-        <CountButton onClick={() => (count !== 0 ? setCount(count - 1) : null)}>
-          <Minus />
-        </CountButton>
-        <Number>{count}</Number>
-        <CountButton onClick={() => setCount(count + 1)}>
-          <Plus />
-        </CountButton>
-      </Counter>
-      <Button onClick={addToCart}>
-        <CartWhite />
-        Add to cart
-      </Button>
+      <CounterBtnContainer>
+        <Counter>
+          <CountButton
+            onClick={() => (count !== 0 ? setCount(count - 1) : null)}
+          >
+            <Minus />
+          </CountButton>
+          <Number>{count}</Number>
+          <CountButton onClick={() => setCount(count + 1)}>
+            <Plus />
+          </CountButton>
+        </Counter>
+        <Button onClick={addToCart}>
+          <CartWhite />
+          Add to cart
+        </Button>
+      </CounterBtnContainer>
     </Container>
   );
 }
@@ -115,6 +119,12 @@ const PriceContainer = styled.div`
   align-items: center;
   justify-content: space-between;
   margin: 24px 0;
+
+  @media screen and (min-width: 768px) {
+    flex-direction: column;
+    align-items: flex-start;
+    row-gap: 10px;
+  }
 `;
 
 const PriceBlock = styled.div`
@@ -152,6 +162,14 @@ const Discount = styled.p`
   color: #b6bcc8;
 `;
 
+const CounterBtnContainer = styled.div`
+  @media screen and (min-width: 768px) {
+    display: flex;
+    align-items: center;
+    column-gap: 16px;
+  }
+`;
+
 const Counter = styled.div`
   display: flex;
   align-items: center;
@@ -159,6 +177,11 @@ const Counter = styled.div`
   background: #f6f8fd;
   border-radius: 10px;
   height: 56px;
+  width: 100%;
+
+  @media screen and (min-width: 768px) {
+    width: 40%;
+  }
 `;
 
 const CountButton = styled.button`
@@ -194,4 +217,8 @@ const Button = styled.button`
   border: none;
   cursor: pointer;
   margin-top: 16px;
+
+  @media screen and (min-width: 768px) {
+    width: 70%;
+  }
 `;

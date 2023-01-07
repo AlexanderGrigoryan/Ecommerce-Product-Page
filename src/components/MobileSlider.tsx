@@ -46,7 +46,11 @@ function MobileSlider() {
 export default MobileSlider;
 
 const Container = styled.div`
-position: relative;
+  position: relative;
+
+  @media screen and (min-width: 768px) {
+    display: none;
+  }
 `;
 
 const Img = styled.img`
