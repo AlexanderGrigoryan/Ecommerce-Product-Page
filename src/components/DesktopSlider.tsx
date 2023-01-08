@@ -99,7 +99,12 @@ const Img = styled.img`
 
 const MiniImages = styled.div`
   display: flex;
-  column-gap: 20px;
+  justify-content: space-between;
+  /* column-gap: 20px; */
+
+  /* @media screen and (min-width: 1024px) {
+    margin-bottom: 32px;
+  } */
 `;
 
 const ImageButton = styled.button`

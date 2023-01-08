@@ -27,7 +27,7 @@ function App() {
           />
         </Helmet>
       </HelmetProvider>
-
+      
       <Container>
         <Header
           cartMenu={cartMenu}
@@ -35,25 +35,34 @@ function App() {
           cartList={cartList}
         />
       </Container>
-      <MobileSlider />
-      <DesktopContainer>
-        <DesktopSlider setSlider={setSlider} />
-        <Product
-          cartList={cartList}
-          setCartList={setCartList}
-          count={count}
-          setCount={setCount}
-        />
-      </DesktopContainer>
-      {cartMenu ? (
-        <CartModal cartList={cartList} setCartList={setCartList} />
-      ) : null}
-      {slider ? <ModalSlider setSlider={setSlider} /> : null}
+      <MainContainer>
+        <MobileSlider />
+        <DesktopContainer>
+          <DesktopSlider setSlider={setSlider} />
+          <Product
+            cartList={cartList}
+            setCartList={setCartList}
+            count={count}
+            setCount={setCount}
+          />
+        </DesktopContainer>
+        {cartMenu ? (
+          <CartModal cartList={cartList} setCartList={setCartList} />
+        ) : null}
+        {slider ? <ModalSlider setSlider={setSlider} /> : null}
+      </MainContainer>
     </>
   );
 }
 
 export default App;
+
+const MainContainer = styled.main`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
 
 const Container = styled.div`
   padding: 0 24px;
@@ -64,4 +73,12 @@ const DesktopContainer = styled.div`
   display: flex;
   align-items: center;
   column-gap: 80px;
+
+  /* @media screen and (min-width: 1024px) {
+    padding: 0 144px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    padding: 0 213px;
+  } */
 `;

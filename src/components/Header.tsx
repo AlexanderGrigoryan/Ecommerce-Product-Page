@@ -69,11 +69,18 @@ export default Header;
 const Container = styled.div`
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding: 19px 0 25px;
+  max-width: 1030px;
 
   @media screen and (min-width: 768px) {
     padding: 42px 0 90px;
+    margin: auto;
   }
+
+  /* @media screen and (min-width: 1024px) {
+    padding: 42px 165px;
+  } */
 `;
 
 const NavContainer = styled.div`
@@ -167,6 +174,10 @@ const ItemsCounter = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+
+  @media screen and (min-width: 768px) {
+    top: 7px;
+  }
 `;
 
 const Avatar = styled.img`

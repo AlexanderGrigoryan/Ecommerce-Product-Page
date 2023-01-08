@@ -88,6 +88,10 @@ export default Product;
 
 const Container = styled.div`
   margin: 24px 0 88px;
+
+  @media screen and (min-width: 768px) {
+    width: 445px;
+  }
 `;
 
 const Brand = styled.h1`
