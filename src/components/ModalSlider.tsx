@@ -14,12 +14,13 @@ import Close from "../svg/Close";
 
 interface Props {
   setSlider: React.Dispatch<React.SetStateAction<boolean>>;
+  modalIndex: number;
 }
 
 function ModalSlider(props: Props) {
-  const { setSlider } = props;
+  const { setSlider, modalIndex } = props;
 
-  const [productIndex, setProductIndex] = useState<number>(0);
+  const [productIndex, setProductIndex] = useState<number>(modalIndex);
 
   const gallery = [product1, product2, product3, product4];
 
@@ -87,6 +88,7 @@ const Backdrop = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 10;
 `;
 
 const Background = styled.div`

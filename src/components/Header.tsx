@@ -6,15 +6,17 @@ import Cart from "../svg/Cart";
 import AvatarIcon from "../img/image-avatar.png";
 import BurgerWindow from "../components/BurgerWindow";
 import { ProductType } from "../types";
+import CartModal from "./CartModal";
 
 interface Props {
   cartMenu: boolean;
   setCartMenu: React.Dispatch<React.SetStateAction<boolean>>;
   cartList: ProductType[];
+  setCartList: React.Dispatch<React.SetStateAction<ProductType[]>>;
 }
 
 function Header(props: Props) {
-  const { cartMenu, setCartMenu, cartList } = props;
+  const { cartMenu, setCartMenu, cartList, setCartList } = props;
 
   const [burgerMenu, setBurgerMenu] = useState<boolean>(false);
 
@@ -58,6 +60,11 @@ function Header(props: Props) {
           </CartButton>
           <Avatar src={AvatarIcon} alt="avatar" />
         </UserContainer>
+        <CartModalContainer>
+          {cartMenu ? (
+            <CartModal cartList={cartList} setCartList={setCartList} />
+          ) : null}
+        </CartModalContainer>
       </Container>
       {burgerMenu ? <BurgerWindow setBurgerMenu={setBurgerMenu} /> : null}
     </>
@@ -72,6 +79,7 @@ const Container = styled.div`
   align-items: center;
   padding: 19px 0 25px;
   max-width: 1030px;
+  position: relative;
 
   @media screen and (min-width: 768px) {
     padding: 42px 0 90px;
@@ -193,5 +201,16 @@ const Avatar = styled.img`
   @media screen and (min-width: 768px) {
     width: 50px;
     height: 50px;
+  }
+`;
+
+const CartModalContainer = styled.div`
+  position: absolute;
+  top: 76px;
+  right: -17px;
+  z-index: 5;
+
+  @media screen and (min-width: 768px) {
+    top: 105px;
   }
 `;

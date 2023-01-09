@@ -15,6 +15,7 @@ function App() {
   const [cartList, setCartList] = useState<ProductType[]>([]);
   const [count, setCount] = useState<number>(0);
   const [slider, setSlider] = useState<boolean>(false);
+  const [productIndex, setProductIndex] = useState<number>(0);
 
   return (
     <>
@@ -27,18 +28,23 @@ function App() {
           />
         </Helmet>
       </HelmetProvider>
-      
+
       <Container>
         <Header
           cartMenu={cartMenu}
           setCartMenu={setCartMenu}
           cartList={cartList}
+          setCartList={setCartList}
         />
       </Container>
       <MainContainer>
         <MobileSlider />
         <DesktopContainer>
-          <DesktopSlider setSlider={setSlider} />
+          <DesktopSlider
+            setSlider={setSlider}
+            productIndex={productIndex}
+            setProductIndex={setProductIndex}
+          />
           <Product
             cartList={cartList}
             setCartList={setCartList}
@@ -46,10 +52,12 @@ function App() {
             setCount={setCount}
           />
         </DesktopContainer>
-        {cartMenu ? (
+        {/* {cartMenu ? (
           <CartModal cartList={cartList} setCartList={setCartList} />
+        ) : null} */}
+        {slider ? (
+          <ModalSlider setSlider={setSlider} modalIndex={productIndex} />
         ) : null}
-        {slider ? <ModalSlider setSlider={setSlider} /> : null}
       </MainContainer>
     </>
   );

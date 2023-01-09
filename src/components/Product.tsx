@@ -221,6 +221,11 @@ const Button = styled.button`
   border: none;
   cursor: pointer;
   margin-top: 16px;
+  transition: all ease 0.2s;
+
+  &:hover {
+    background: #ffab6a;
+  }
 
   @media screen and (min-width: 768px) {
     width: 70%;
