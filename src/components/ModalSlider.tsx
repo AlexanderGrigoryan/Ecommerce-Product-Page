@@ -1,5 +1,5 @@
 import { useState } from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import product1 from "../img/image-product-1.jpg";
 import product2 from "../img/image-product-2.jpg";
 import product3 from "../img/image-product-3.jpg";
@@ -49,17 +49,45 @@ function ModalSlider(props: Props) {
           </CloseButton>
           <Img src={gallery[productIndex]} />
           <MiniImages>
-            <ImageButton onClick={() => setProductIndex(0)}>
-              <MiniImage src={miniProduct1} alt="thumbnail image" />
+            <ImageButton
+              active={productIndex === 0}
+              onClick={() => setProductIndex(0)}
+            >
+              <MiniImage
+                active={productIndex === 0}
+                src={miniProduct1}
+                alt="thumbnail image"
+              />
             </ImageButton>
-            <ImageButton onClick={() => setProductIndex(1)}>
-              <MiniImage src={miniProduct2} alt="thumbnail image" />
+            <ImageButton
+              active={productIndex === 1}
+              onClick={() => setProductIndex(1)}
+            >
+              <MiniImage
+                active={productIndex === 1}
+                src={miniProduct2}
+                alt="thumbnail image"
+              />
             </ImageButton>
-            <ImageButton onClick={() => setProductIndex(2)}>
-              <MiniImage src={miniProduct3} alt="thumbnail image" />
+            <ImageButton
+              active={productIndex === 2}
+              onClick={() => setProductIndex(2)}
+            >
+              <MiniImage
+                active={productIndex === 2}
+                src={miniProduct3}
+                alt="thumbnail image"
+              />
             </ImageButton>
-            <ImageButton onClick={() => setProductIndex(3)}>
-              <MiniImage src={miniProduct4} alt="thumbnail image" />
+            <ImageButton
+              active={productIndex === 3}
+              onClick={() => setProductIndex(3)}
+            >
+              <MiniImage
+                active={productIndex === 3}
+                src={miniProduct4}
+                alt="thumbnail image"
+              />
             </ImageButton>
           </MiniImages>
           <Buttons>
@@ -134,21 +162,43 @@ const MiniImages = styled.div`
   column-gap: 32px;
 `;
 
-const ImageButton = styled.button`
-  border: none;
-  background: inherit;
-  cursor: pointer;
-`;
+interface ImageButtonProps {
+  active: boolean;
+}
 
-const MiniImage = styled.img`
-  width: 88px;
-  height: 88px;
-  border-radius: 10px;
-`;
+const ImageButton = styled.button(
+  (props: ImageButtonProps) => css`
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 0.75),
+      rgba(255, 255, 255, 0.75)
+    );
+    cursor: pointer;
+    opacity: ${props.active ? "0.25" : "1"};
+  `
+);
+
+interface MiniImageProps {
+  active: boolean;
+}
+
+const MiniImage = styled.img(
+  (props: MiniImageProps) => css`
+    width: 88px;
+    height: 100%;
+    border-radius: 10px;
+    transition: all ease 0.2s;
+
+    &:hover {
+      opacity: ${!props.active ? 0.55 : "none"};
+    }
+  `
+);
 
 const Buttons = styled.div`
   display: flex;
-  /* justify-content: space-between; */
 `;
 
 const PreviousButton = styled.button`

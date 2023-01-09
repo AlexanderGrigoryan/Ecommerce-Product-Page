@@ -1,4 +1,3 @@
-import { useState } from "react";
 import styled, { css } from "styled-components";
 import product1 from "../img/image-product-1.jpg";
 import product2 from "../img/image-product-2.jpg";
@@ -8,8 +7,6 @@ import miniProduct1 from "../img/image-product-1-thumbnail.jpg";
 import miniProduct2 from "../img/image-product-2-thumbnail.jpg";
 import miniProduct3 from "../img/image-product-3-thumbnail.jpg";
 import miniProduct4 from "../img/image-product-4-thumbnail.jpg";
-import Next from "../svg/Next";
-import Previous from "../svg/Previous";
 
 interface Props {
   setSlider: React.Dispatch<React.SetStateAction<boolean>>;
@@ -21,22 +18,6 @@ function DesktopSlider(props: Props) {
   const { setSlider, productIndex, setProductIndex } = props;
 
   const gallery = [product1, product2, product3, product4];
-
-  // const minusHandler = () => {
-  //   if (productIndex === 0) {
-  //     return;
-  //   } else {
-  //     setProductIndex(productIndex - 1);
-  //   }
-  // };
-
-  // const plusHandler = () => {
-  //   if (productIndex === gallery.length - 1) {
-  //     return;
-  //   } else {
-  //     setProductIndex(productIndex + 1);
-  //   }
-  // };
 
   return (
     <Container>
@@ -85,14 +66,6 @@ function DesktopSlider(props: Props) {
           />
         </ImageButton>
       </MiniImages>
-      {/* <Buttons>
-        <PreviousButton onClick={minusHandler}>
-          <Previous />
-        </PreviousButton>
-        <NextButton onClick={plusHandler}>
-          <Next />
-        </NextButton>
-      </Buttons> */}
     </Container>
   );
 }
@@ -128,11 +101,6 @@ const Img = styled.img`
 const MiniImages = styled.div`
   display: flex;
   justify-content: space-between;
-  /* column-gap: 20px; */
-
-  /* @media screen and (min-width: 1024px) {
-    margin-bottom: 32px;
-  } */
 `;
 
 interface ImageButtonProps {
@@ -164,44 +132,7 @@ const MiniImage = styled.img(
     transition: all ease 0.2s;
 
     &:hover {
-      opacity: ${!props.active ? 0.25 : "none"};
+      opacity: ${!props.active ? 0.5 : "none"};
     }
   `
 );
-
-const Buttons = styled.div`
-  display: flex;
-  justify-content: space-between;
-`;
-
-const PreviousButton = styled.button`
-  height: 40px;
-  width: 40px;
-  border-radius: 50%;
-  border: none;
-  cursor: pointer;
-  background: #ffffff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  top: 50%;
-  left: 8px;
-  transform: translate(0, -50%);
-`;
-
-const NextButton = styled.button`
-  height: 40px;
-  width: 40px;
-  border-radius: 50%;
-  border: none;
-  cursor: pointer;
-  background: #ffffff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  top: 50%;
-  right: 8px;
-  transform: translate(0, -50%);
-`;

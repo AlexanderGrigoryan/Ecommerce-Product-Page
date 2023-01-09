@@ -29,7 +29,6 @@ function Header(props: Props) {
           </BurgerButton>
           <Logo src={logo} alt="logo" />
         </NavContainer>
-
         <NavContainerResp>
           <Logo src={logo} alt="logo" />
           <NavList>
@@ -50,7 +49,6 @@ function Header(props: Props) {
             </ListItem>
           </NavList>
         </NavContainerResp>
-
         <UserContainer>
           <CartButton onClick={() => setCartMenu(!cartMenu)}>
             <Cart />
@@ -85,10 +83,6 @@ const Container = styled.div`
     padding: 42px 0 90px;
     margin: auto;
   }
-
-  /* @media screen and (min-width: 1024px) {
-    padding: 42px 165px;
-  } */
 `;
 
 const NavContainer = styled.div`

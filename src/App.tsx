@@ -1,12 +1,11 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Helmet, HelmetProvider } from "react-helmet-async";
+import { ProductType } from "./types";
 import GlobalStyles from "./components/GlobalStyles";
 import styled from "styled-components";
 import Header from "./components/Header";
-import MobileSlider from "./components/MobileSlider";
 import Product from "./components/Product";
-import CartModal from "./components/CartModal";
-import { ProductType } from "./types";
+import MobileSlider from "./components/MobileSlider";
 import DesktopSlider from "./components/DesktopSlider";
 import ModalSlider from "./components/ModalSlider";
 
@@ -52,9 +51,6 @@ function App() {
             setCount={setCount}
           />
         </DesktopContainer>
-        {/* {cartMenu ? (
-          <CartModal cartList={cartList} setCartList={setCartList} />
-        ) : null} */}
         {slider ? (
           <ModalSlider setSlider={setSlider} modalIndex={productIndex} />
         ) : null}
@@ -70,6 +66,10 @@ const MainContainer = styled.main`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  @media screen and (min-width: 1024px) {
+    margin-bottom: 132px;
+  }
 `;
 
 const Container = styled.div`
@@ -81,12 +81,4 @@ const DesktopContainer = styled.div`
   display: flex;
   align-items: center;
   column-gap: 80px;
-
-  /* @media screen and (min-width: 1024px) {
-    padding: 0 144px;
-  }
-
-  @media screen and (min-width: 1440px) {
-    padding: 0 213px;
-  } */
 `;

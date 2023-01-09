@@ -45,9 +45,6 @@ const Container = styled.div`
   background: #ffffff;
   box-shadow: 0px 20px 50px -20px rgba(29, 32, 38, 0.503143);
   padding: 24px 24px 32px 24px;
-  /* position: absolute;
-  top: 0;
-  right: 0; */
 `;
 
 const Cart = styled.p`

@@ -46,6 +46,10 @@ const MainBackground = styled.div`
   background: rgba(0, 0, 0, 0.75);
   width: 100%;
   z-index: 10;
+
+  @media screen and (min-width: 768px) {
+    display: none;
+  }
 `;
 
 const BurgerBlock = styled.div`
